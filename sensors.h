@@ -16,5 +16,7 @@ void ADC_Pin_Config();
 
 void ADC_Clock_Init();
 
+void ADC_Watchdog_Init();
+
 #endif
 
