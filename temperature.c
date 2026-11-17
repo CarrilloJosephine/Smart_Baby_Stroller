@@ -2,6 +2,13 @@
 
 #include "temperature.h"
 
+
+//Calculate temperature based of input voltage
+
+long int Calculate_Temp(int V_out){
+    long int temp = (V_out/0.01)- 0.05;
+}
+
 // Calculate average temperature
 float Temperature_Average(float t1, float t2, float t3)
 {
