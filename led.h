@@ -1,13 +1,15 @@
+// Declares the functions used to control the four temperature indicator LEDs.
+
 #ifndef LED_H
 #define LED_H
 
-// Initialize LED pins
+// Initialize the LED pins
 void LED_Init(void);
 
 // Turn off all LEDs
 void LED_AllOff(void);
 
-// Individual LED controls
+// Turn on the selected temperature LED
 void LED_Blue(void);
 void LED_Green(void);
 void LED_Yellow(void);

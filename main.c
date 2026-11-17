@@ -1,76 +1,150 @@
-// Smart Baby Stroller
-// STM32 NUCLEO-L476RG
-// Main Controller
+// Main program for the Smart Baby Stroller. Reads temperature sensors and controls the LEDs, fan, buzzer, and emergency stop.
 
 #include "stm32l476xx.h"
 #include "led.h"
-
-// Temporary temperature for testing
-// Later, this value will come from our sensors
-float temperature = 26.0f;
+#include "temperature.h"
+#include "adc.h"
+#include "systick.h"
+#include "button.h"
+#include "buzzer.h"
+#include "fan.h"
+#include "emergency.h"
+#include "safety.h"
 
 int main(void)
 {
-    // Initialize LED pins
+    float sensor1 = 0.0f;
+    float sensor2 = 0.0f;
+    float sensor3 = 0.0f;
+
+    float average = 0.0f;
+    float maximum = 0.0f;
+    float minimum = 0.0f;
+
+    int state = 1;
+    int sensor_fault = 1;
+    int emergency_active = 0;
+
+    uint32_t last_read = 0;
+    uint32_t now;
+
+    // Initialize components
+    SysTick_Init();
     LED_Init();
+    ADC_Init();
+    Button_Init();
+    Buzzer_Init();
+    Fan_Init();
+    Emergency_Init();
+
+    LED_AllOff();
+    Fan_Off();
+    Buzzer_Off();
 
     while (1)
     {
         // 1. Read temperature sensors
-        // We will add the sensor code later
+        now = SysTick_Millis();
 
-
-        // 2. Calculate temperature
-        // We will calculate the average and maximum
-        // temperature from our three sensors later
-
-
-        // 3. Check emergency switch
-        // We will add the emergency stop code later
-
-
-        // 4. Determine temperature state
-
-        if (temperature < 16.0f)
+        if ((uint32_t)(now - last_read) >= 1000U)
         {
-            // BLUE: Too cold
-            LED_Blue();
+            last_read = now;
+
+            sensor1 = ADC_ReadTemperature(1);
+            sensor2 = ADC_ReadTemperature(2);
+            sensor3 = ADC_ReadTemperature(3);
+
+            // 2. Calculate temperature
+            average = Temperature_Average(sensor1, sensor2, sensor3);
+            maximum = Temperature_Max(sensor1, sensor2, sensor3);
+            minimum = Temperature_Min(sensor1, sensor2, sensor3);
+
+            // 3. Check sensor safety
+            sensor_fault = Safety_CheckSensors(sensor1, sensor2, sensor3);
+
+            // 4. Determine temperature state
+            if (sensor_fault == 0)
+            {
+                if (maximum > 28.0f)
+                {
+                    state = 3;
+                }
+                else if (minimum < 16.0f)
+                {
+                    state = 0;
+                }
+                else
+                {
+                    state = Temperature_State(maximum);
+                }
+            }
+
+            // 5. Control LEDs
+            if (sensor_fault)
+            {
+                LED_AllOff();
+            }
+            else if (state == 0)
+            {
+                LED_Blue();
+            }
+            else if (state == 1)
+            {
+                LED_Green();
+            }
+            else if (state == 2)
+            {
+                LED_Yellow();
+            }
+            else
+            {
+                LED_Red();
+            }
         }
-
-        else if (temperature <= 24.0f)
-        {
-            // GREEN: Normal
-            LED_Green();
-        }
-
-        else if (temperature <= 28.0f)
-        {
-            // YELLOW: Warm
-            LED_Yellow();
-        }
-
-        else
-        {
-            // RED: Too hot
-            LED_Red();
-        }
-
-
-        // 5. Control LEDs
-        // The LED functions are currently called in Step 4
-        // Later, we can move them here
-
 
         // 6. Control fan
-        // We will add fan control later
+        emergency_active = Emergency_IsActive();
 
+        if (emergency_active || sensor_fault)
+        {
+            Fan_Off();
+        }
+        else if (state == 2)
+        {
+            Fan_Low();
+        }
+        else if (state == 3)
+        {
+            Fan_High();
+        }
+        else
+        {
+            Fan_Off();
+        }
 
-        // 7. Control buzzer
-        // We will add buzzer control later
+        // 7. Update silence button
+        Button_Update();
 
-
-        // 8. Check silence button
-        // We will add the silence button code later
-
+        // 8. Control buzzer
+        if (emergency_active)
+        {
+            Buzzer_Off();
+        }
+        else if (sensor_fault)
+        {
+            Buzzer_Fault();
+        }
+        else if (state == 0)
+        {
+            Buzzer_Slow();
+        }
+        else if (state == 3)
+        {
+            Buzzer_Fast();
+        }
+        else
+        {
+            Buzzer_Off();
+        }
     }
 }

@@ -1,16 +1,18 @@
+// Declares the functions used to calculate temperature readings from three sensors and determine the temperature state.
+
 #ifndef TEMPERATURE_H
 #define TEMPERATURE_H
 
-// Calculate average temperature
+// Calculate the average temperature
 float Temperature_Average(float t1, float t2, float t3);
 
-// Find highest temperature
+// Find the highest temperature
 float Temperature_Max(float t1, float t2, float t3);
 
-// Find lowest temperature
+// Find the lowest temperature
 float Temperature_Min(float t1, float t2, float t3);
 
-// Determine temperature state
+// Determine the temperature state
 int Temperature_State(float temperature);
 
 #endif

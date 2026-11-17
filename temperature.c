@@ -1,6 +1,4 @@
-// Smart Baby Stroller
-// STM32 NUCLEO-L476RG
-// Temperature Processing Module
+// Calculates the average, highest, and lowest temperatures from three TMP36 sensors. Determines the temperature warning state.
 
 #include "temperature.h"
 
@@ -10,40 +8,40 @@ float Temperature_Average(float t1, float t2, float t3)
     return (t1 + t2 + t3) / 3.0f;
 }
 
-// Find highest temperature
+// Find the highest temperature
 float Temperature_Max(float t1, float t2, float t3)
 {
-    float max = t1;
+    float maximum = t1;
 
-    if (t2 > max)
+    if (t2 > maximum)
     {
-        max = t2;
+        maximum = t2;
     }
 
-    if (t3 > max)
+    if (t3 > maximum)
     {
-        max = t3;
+        maximum = t3;
     }
 
-    return max;
+    return maximum;
 }
 
-// Find lowest temperature
+// Find the lowest temperature
 float Temperature_Min(float t1, float t2, float t3)
 {
-    float min = t1;
+    float minimum = t1;
 
-    if (t2 < min)
+    if (t2 < minimum)
     {
-        min = t2;
+        minimum = t2;
     }
 
-    if (t3 < min)
+    if (t3 < minimum)
     {
-        min = t3;
+        minimum = t3;
     }
 
-    return min;
+    return minimum;
 }
 
 // Determine temperature state
@@ -51,18 +49,18 @@ int Temperature_State(float temperature)
 {
     if (temperature < 16.0f)
     {
-        return 0; // BLUE
+        return 0;  // Cold
     }
     else if (temperature <= 24.0f)
     {
-        return 1; // GREEN
+        return 1;  // Normal
     }
     else if (temperature <= 28.0f)
     {
-        return 2; // YELLOW
+        return 2;  // Warm
     }
     else
     {
-        return 3; // RED
+        return 3;  // Hot
     }
 }
