@@ -1,5 +1,6 @@
 // Reads temperature from three TMP36 sensors using the STM32 ADC. Converts the analog voltage into temperature in Celsius.
 
+#include "CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
 #include "stm32l476xx.h"
 #include "adc.h"
 
@@ -69,6 +70,18 @@ void ADC_Init(void)
                    (7U << 27);
 }
 
+// Set priority for ADC1, ADC2, and ADC3
+void ADC_NVIC_Init(){
+
+    // Set ADC1 & 2 to be higher priority
+    // Possibly allocate temperature and water level sensors to ADC1_2)
+    NVIC_SetPriority(ADC1_2_IRQn,1);
+    NVIC_SetPriority(ADC3_IRQn, 3);
+
+    // Enable interrupt lines for ADCs
+    NVIC_EnableIRQ(ADC1_2_IRQn);
+    NVIC_EnableIRQ(ADC3_IRQn);
+}
 
 // Read one temperature sensor
 uint16_t ADC_Read(uint8_t sensor)
@@ -108,6 +121,43 @@ uint16_t ADC_Read(uint8_t sensor)
     return (uint16_t)ADC1->DR;
 }
 
+// Set up high and low threshlods for ADC to read
+void ADC_Watchdog_Init(){
+    
+    // Initialized temporary low/high thresholds for AWD1
+    uint32_t low_threshold;
+    uint32_t high_threshold;
+
+    
+    
+    ADC1->CFGR |= ADC_CFGR_AWD1EN;                  // Enable AWD1 monitoring for regular ADC group
+    ADC1->CFGR |= (5U << ADC_CFGR_AWD1CH_Pos);      // Configure AWD1 to monitor channel 5
+
+    // Enable AWD1 interrupt
+    ADC1->IER |= ADC_IER_AWD1IE_Msk;
+    
+    // set low and high thresholds for AWD1
+    ADC1->TR1 |= (low_threshold << ADC_TR1_LT1_Pos);
+
+    // select channel __ for AWD1
+    ADC1->TR1 |= (high_threshold << ADC_TR1_HT1_Pos);
+
+}
+
+// ADC1 interrupt handler
+void ADC1_IRQHandler(){
+    // After end of timer, read ADC value
+    // If ADC value is high_threshold -> EXTI0 -> lED & Buzzer
+    // Elif ADC value is low_threshold -> EXTI1 -> LED
+    // Store read value in array
+}
+
+// Set up timer for periodic interrupts 
+//(TIM6 -> 16 bit periodic ADC sampling)
+void TIM6_Init(){
+    // setup TIM6
+}
+
 
 // Convert ADC reading to Celsius
 float ADC_ReadTemperature(uint8_t sensor)
@@ -118,7 +168,7 @@ float ADC_ReadTemperature(uint8_t sensor)
 
     value = ADC_Read(sensor);
 
-    // Convert ADC value to voltage
+    // Convert ADC value to voltage (note 12 bit resolution)
     voltage = ((float)value * 3.3f) / 4095.0f;
 
     // TMP36 temperature formula

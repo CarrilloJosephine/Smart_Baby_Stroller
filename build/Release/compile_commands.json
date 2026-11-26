@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release",
+  "command": "\"/Users/kseniyakhamushkina/Library/Application Support/stm32cube/bundles/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc\" -DRTE_DEVICE_STARTUP_STM32L4XX -DSTM32L476xx -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Inc -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Core/CMSIS/Core/Include -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Device/ST/STM32L4xx/Include -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mlittle-endian -mthumb -std=gnu11 -fstack-usage -Wall -Wextra -Wpedantic -Wno-unused-parameter -Os -o CMakeFiles/Lab5_SW1_SW2.dir/Src/syscall.c.obj -c /Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Src/syscall.c",
+  "file": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Src/syscall.c",
+  "output": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release/CMakeFiles/Lab5_SW1_SW2.dir/Src/syscall.c.obj"
+},
+{
+  "directory": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release",
+  "command": "\"/Users/kseniyakhamushkina/Library/Application Support/stm32cube/bundles/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc\" -DRTE_DEVICE_STARTUP_STM32L4XX -DSTM32L476xx -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Inc -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Core/CMSIS/Core/Include -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Device/ST/STM32L4xx/Include -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mlittle-endian -mthumb -std=gnu11 -fstack-usage -Wall -Wextra -Wpedantic -Wno-unused-parameter -Os -o CMakeFiles/Lab5_SW1_SW2.dir/Src/sysmem.c.obj -c /Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Src/sysmem.c",
+  "file": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Src/sysmem.c",
+  "output": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release/CMakeFiles/Lab5_SW1_SW2.dir/Src/sysmem.c.obj"
+},
+{
+  "directory": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release",
+  "command": "\"/Users/kseniyakhamushkina/Library/Application Support/stm32cube/bundles/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc\" -DRTE_DEVICE_STARTUP_STM32L4XX -DSTM32L476xx -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Inc -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Core/CMSIS/Core/Include -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Device/ST/STM32L4xx/Include -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mlittle-endian -mthumb -std=gnu11 -fstack-usage -Wall -Wextra -Wpedantic -Wno-unused-parameter -Os -o CMakeFiles/Lab5_SW1_SW2.dir/Src/main.c.obj -c /Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Src/main.c",
+  "file": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Src/main.c",
+  "output": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release/CMakeFiles/Lab5_SW1_SW2.dir/Src/main.c.obj"
+},
+{
+  "directory": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release",
+  "command": "\"/Users/kseniyakhamushkina/Library/Application Support/stm32cube/bundles/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc\" -DRTE_DEVICE_STARTUP_STM32L4XX -DSTM32L476xx -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Inc -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Core/CMSIS/Core/Include -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Device/ST/STM32L4xx/Include -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mlittle-endian -mthumb -std=gnu11 -fstack-usage -Wall -Wextra -Wpedantic -Wno-unused-parameter -Os -o CMakeFiles/Lab5_SW1_SW2.dir/Drivers/CMSIS/Device/ST/STM32L4xx/Source/Templates/system_stm32l4xx.c.obj -c /Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Device/ST/STM32L4xx/Source/Templates/system_stm32l4xx.c",
+  "file": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Device/ST/STM32L4xx/Source/Templates/system_stm32l4xx.c",
+  "output": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release/CMakeFiles/Lab5_SW1_SW2.dir/Drivers/CMSIS/Device/ST/STM32L4xx/Source/Templates/system_stm32l4xx.c.obj"
+},
+{
+  "directory": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release",
+  "command": "\"/Users/kseniyakhamushkina/Library/Application Support/stm32cube/bundles/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc\" -DRTE_DEVICE_STARTUP_STM32L4XX -DSTM32L476xx -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Inc -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Core/CMSIS/Core/Include -I/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Drivers/CMSIS/Device/ST/STM32L4xx/Include -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mlittle-endian -mthumb -std=gnu11 -fstack-usage -Wall -Wextra -Wpedantic -Wno-unused-parameter -Os -x assembler-with-cpp -MMD -MP -o CMakeFiles/Lab5_SW1_SW2.dir/Src/startup_stm32l476xx.S.obj -c /Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Src/startup_stm32l476xx.S",
+  "file": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/Src/startup_stm32l476xx.S",
+  "output": "/Users/kseniyakhamushkina/code/ENGR_478/Lab5_SW1_SW2/build/Release/CMakeFiles/Lab5_SW1_SW2.dir/Src/startup_stm32l476xx.S.obj"
+}
+]

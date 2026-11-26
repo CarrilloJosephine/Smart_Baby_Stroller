@@ -12,11 +12,5 @@ float ADC_Value( int V_out, int V_Ref);
         V_ref --> reference voltage (+3.3V, +5V from STM32 board)
 */
 
-void ADC_Pin_Config();
-
-void ADC_Clock_Init();
-
-void ADC_Watchdog_Init();
-
 #endif
 

@@ -1,0 +1,21 @@
+17:53:48:739       -------------------------------------------------------------------
+17:53:48:739                        STM32CubeProgrammer v2.23.0                  
+17:53:48:739       -------------------------------------------------------------------
+
+17:53:48:739 
+
+17:53:48:739 Log output file:   stlink.log
+17:53:48:739 Command line:  -c port=SWD freq=1000 mode=ur -log "stlink.log"
+17:53:48:739 
+17:53:48:751 ST-LINK SN  : 066BFF515086874967232223
+17:53:48:751 ST-LINK FW  : V15J63M63
+17:53:48:760 Board       : NUCLEO-L476RG 
+17:53:48:769 Voltage     : 3.25V
+17:53:58:882 Error: ST-LINK error (DEV_USB_COMM_ERR)
+17:53:58:883 2nd connect tentative with frequency (8MHz)
+17:53:58:887 ST-LINK SN  : 066BFF515086874967232223
+17:53:58:888 ST-LINK FW  : V15J63M63
+17:53:58:911 Board       : NUCLEO-L476RG 
+17:53:58:926 Voltage     : 3.25V
+17:54:09:094 Error: ST-LINK error (DEV_USB_COMM_ERR)
+17:54:09:096 Disconnected

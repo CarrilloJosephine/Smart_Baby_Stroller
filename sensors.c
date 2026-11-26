@@ -6,5 +6,6 @@
 #include <./CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h>
 
 float ADC_Value(int V_out, int V_Ref){
-    // code formula here
+    float ADC_val = (V_out/V_Ref)*4095;
+    return ADC_val;
 }

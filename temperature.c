@@ -6,7 +6,10 @@
 //Calculate temperature based of input voltage
 
 long int Calculate_Temp(int V_out){
+    /* In order to figure out the temperature average, the voltage has to be sampled from every ADC register*/
+    /* Formula for TMP36 reading temperature (C) in relation voltage output (V): */
     long int temp = (V_out/0.01)- 0.05;
+    return temp;                            // T= temperature in Celsius
 }
 
 // Calculate average temperature
